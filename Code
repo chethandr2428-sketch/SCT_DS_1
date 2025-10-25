@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+# Read the dataset (make sure the CSV file is in the same folder as this script)
+df = pd.read_csv("/content/population_data_large.csv")
+
+# --- Histogram for Age Distribution ---
+plt.figure(figsize=(8,5))
+plt.hist(df['Age'], bins=6, 
+         color=random.choice(['orange','teal','violet','gold','dodgerblue','limegreen']),
+         edgecolor='black')
+plt.title('Age Distribution', fontsize=14)
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.grid(axis='y', alpha=0.5)
+plt.show()
+
+# --- Bar Chart for Gender Distribution ---
+plt.figure(figsize=(6,4))
+gender_counts = df['Gender'].value_counts()
+colors = ['#1f77b4','#ff7f0e']  # blue and orange
+plt.bar(gender_counts.index, gender_counts.values, color=colors, edgecolor='black')
+plt.title('Gender Distribution', fontsize=14)
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.grid(axis='y', alpha=0.4)
+plt.show()
